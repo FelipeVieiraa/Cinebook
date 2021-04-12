@@ -28,7 +28,7 @@ function Intro() {
             estão aqui
           </Text>
 
-          <NextButton onPress={() => navigation.navigate('Session')}>
+          <NextButton onPress={() => navigation.navigate('session')}>
             <ButtonText>
               Começar
             </ButtonText>

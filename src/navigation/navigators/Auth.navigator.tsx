@@ -1,8 +1,9 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import Intro from '../../screens/Intro/Intro';
+import Intro from '../../screens/Intro/intro';
 import Session from '../../screens/Session/session';
+import SignUp from '../../screens/SignUp/signUp';
 
 const StackNavigator = createStackNavigator();
 
@@ -15,12 +16,16 @@ function AuthNavigator() {
       }}
     >
       <StackNavigator.Screen
-        name="Intro"
+        name="intro"
         component={Intro}
       />
       <StackNavigator.Screen
-        name="Session"
+        name="session"
         component={Session}
+      />
+      <StackNavigator.Screen
+        name="signUp"
+        component={SignUp}
       />
     </StackNavigator.Navigator>
   );

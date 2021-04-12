@@ -11,11 +11,12 @@ import {
   SignInButton,
   SignInButtonText,
   SignUpButton,
-  SignUpButtonText
+  SignUpButtonText,
+  Title
 } from './styles';
 import { widthPercentageToDP } from '../../utils/metrics';
 
-function Session() {
+function SignUp() {
   const navigation = useNavigation();
 
   return(
@@ -23,7 +24,7 @@ function Session() {
       <Header>
         <BackButton onPress={() => navigation.goBack()}>
           <Icon
-            icon="close"
+            icon="arrowLeft"
             style={{
               width: "100%",
               height: "100%"
@@ -33,32 +34,34 @@ function Session() {
       </Header>
 
       <Main>
-        <Icon icon="logo"/>
+        <Title>Registrar-se</Title>
+        <Input placeholder="Nome" />
         <Input placeholder="E-mail" />
-        <Input placeholder="Password" />
-        <SignInButton>
-          <SignInButtonText>
-            Entrar
-          </SignInButtonText>
-        </SignInButton>
+        <Input placeholder="Senha" />
+        <SignUpButton>
+          <SignUpButtonText>
+            Cadastrar
+          </SignUpButtonText>
+        </SignUpButton>
 
-        <SignUpButton onPress={() => navigation.navigate("signUp")}>
+        <SignInButton onPress={() => navigation.goBack()}>
           <Icon 
-            icon="ticket"
+            icon="signIn"
             style={{
-              width: widthPercentageToDP(6),
-              height: widthPercentageToDP(6),
+              width: widthPercentageToDP(5),
+              height: widthPercentageToDP(5),
               marginRight: 5
             }}
           />
-          <SignUpButtonText>
-            Ainda não têm uma conta?
-          </SignUpButtonText>
-        </SignUpButton>
+          <SignInButtonText>
+            Já tenho uma conta.
+          </SignInButtonText>
+        </SignInButton>
+
       </Main>
 
     </Container>
   );
 }
 
-export default Session;
+export default SignUp;
