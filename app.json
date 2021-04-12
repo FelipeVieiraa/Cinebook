@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "lifetravels",
-    "slug": "lifetravels",
+    "name": "cinebook",
+    "slug": "cinebook",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
