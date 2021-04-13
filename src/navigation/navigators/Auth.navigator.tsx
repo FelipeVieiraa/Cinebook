@@ -2,7 +2,7 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import Intro from '../../screens/Intro/intro';
-import Session from '../../screens/Session/session';
+import SignIn from '../../screens/SignIn/signIn';
 import SignUp from '../../screens/SignUp/signUp';
 
 const StackNavigator = createStackNavigator();
@@ -20,8 +20,8 @@ function AuthNavigator() {
         component={Intro}
       />
       <StackNavigator.Screen
-        name="session"
-        component={Session}
+        name="signIn"
+        component={SignIn}
       />
       <StackNavigator.Screen
         name="signUp"

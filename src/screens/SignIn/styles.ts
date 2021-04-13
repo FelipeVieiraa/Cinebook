@@ -45,13 +45,14 @@ export const SignInButton = styled.TouchableOpacity`
   width: 100%;
   height: ${heightPercentageToDP(7)};
   border-radius: 9px;
-  margin-top: 18px;
+  margin-top: 28px;
   background-color: #01B7D7;
 
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  opacity: ${({ disabled }) => disabled ? 0.5 : 1};
 `;
 
 export const SignInButtonText = styled.Text`

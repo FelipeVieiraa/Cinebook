@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 
 import { Icon } from '../../components/Icon/Icon';
@@ -6,17 +6,25 @@ import {
   BackButton,
   Container,
   Header,
-  Input,
   Main,
-  SignInButton,
-  SignInButtonText,
   SignUpButton,
   SignUpButtonText
 } from './styles';
 import { widthPercentageToDP } from '../../utils/metrics';
+import SignInForm, { SessionValues } from './signIn.form';
+import { FormikHelpers } from 'formik';
 
-function Session() {
+function SignIn() {
   const navigation = useNavigation();
+
+  const [values] = useState<SessionValues>({
+    email: "",
+    password: ""
+  });
+
+  function onSubmit(values: SessionValues, formikActions: FormikHelpers<SessionValues>) {
+    formikActions.setSubmitting(false);
+  }
 
   return(
     <Container>
@@ -34,13 +42,8 @@ function Session() {
 
       <Main>
         <Icon icon="logo"/>
-        <Input placeholder="E-mail" />
-        <Input placeholder="Password" />
-        <SignInButton>
-          <SignInButtonText>
-            Entrar
-          </SignInButtonText>
-        </SignInButton>
+
+        <SignInForm onSubmit={onSubmit} values={values}/>
 
         <SignUpButton onPress={() => navigation.navigate("signUp")}>
           <Icon 
@@ -61,4 +64,4 @@ function Session() {
   );
 }
 
-export default Session;
+export default SignIn;

@@ -38,7 +38,7 @@ function Intro() {
             estão aqui
           </Text>
 
-          <NextButton onPress={() => navigation.navigate('session')}>
+          <NextButton onPress={() => navigation.navigate('signIn')}>
             <ButtonText>
               Começar
             </ButtonText>
