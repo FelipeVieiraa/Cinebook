@@ -7,7 +7,7 @@ import RootNavigator from './src/navigation';
 export default function App() {
   return (
     <>
-      <StatusBar style="auto" />
+      <StatusBar style="dark" backgroundColor="#F8F8F8"/>
       <RootNavigator/>
     </>
   );

@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { StatusBar } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
 import { Icon } from '../../components/Icon/Icon';
@@ -7,6 +8,15 @@ import { heightPercentageToDP, widthPercentageToDP } from '../../utils/metrics';
 
 function Intro() {
   const navigation = useNavigation();
+
+  useEffect(() => {
+    navigation.addListener("focus", () => {
+      StatusBar.setHidden(true);
+    });
+    navigation.addListener("blur", () => {
+      StatusBar.setHidden(false);
+    })
+  }, []);
 
   return(
     <Container
