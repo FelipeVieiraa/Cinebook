@@ -1,23 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
+import { FormikHelpers } from 'formik';
 
-import { Icon } from '../../components/Icon/Icon';
 import {
   BackButton,
   Container,
   Header,
-  Input,
   Main,
   SignInButton,
   SignInButtonText,
-  SignUpButton,
-  SignUpButtonText,
   Title
 } from './styles';
+import { Icon } from '../../components/Icon/Icon';
+import SignUpForm, { RegisterValues } from './signUp.form';
+
 import { widthPercentageToDP } from '../../utils/metrics';
 
 function SignUp() {
   const navigation = useNavigation();
+
+  const [values] = useState<RegisterValues>({
+    name: "",
+    email: "",
+    password: ""
+  });
+
+  function onSubmit(values: RegisterValues, formikActions: FormikHelpers<RegisterValues>) {
+    formikActions.setSubmitting(false);
+    console.log(values)
+  }
 
   return(
     <Container>
@@ -35,14 +46,8 @@ function SignUp() {
 
       <Main>
         <Title>Registrar-se</Title>
-        <Input placeholder="Nome" />
-        <Input placeholder="E-mail" />
-        <Input placeholder="Senha" />
-        <SignUpButton>
-          <SignUpButtonText>
-            Cadastrar
-          </SignUpButtonText>
-        </SignUpButton>
+
+        <SignUpForm onSubmit={onSubmit} values={values} />
 
         <SignInButton onPress={() => navigation.goBack()}>
           <Icon 
@@ -57,9 +62,7 @@ function SignUp() {
             Já tenho uma conta.
           </SignInButtonText>
         </SignInButton>
-
       </Main>
-
     </Container>
   );
 }

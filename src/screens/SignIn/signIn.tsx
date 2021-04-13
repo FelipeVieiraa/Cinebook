@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
+import { FormikHelpers } from 'formik';
 
-import { Icon } from '../../components/Icon/Icon';
 import {
   BackButton,
   Container,
@@ -10,9 +10,10 @@ import {
   SignUpButton,
   SignUpButtonText
 } from './styles';
-import { widthPercentageToDP } from '../../utils/metrics';
+import { Icon } from '../../components/Icon/Icon';
 import SignInForm, { SessionValues } from './signIn.form';
-import { FormikHelpers } from 'formik';
+
+import { widthPercentageToDP } from '../../utils/metrics';
 
 function SignIn() {
   const navigation = useNavigation();
