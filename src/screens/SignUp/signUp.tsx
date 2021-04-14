@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { FormikHelpers } from 'formik';
 
@@ -15,19 +15,28 @@ import { Icon } from '../../components/Icon/Icon';
 import SignUpForm, { RegisterValues } from './signUp.form';
 
 import { widthPercentageToDP } from '../../utils/metrics';
+import { UsersContext } from '../../store/users';
 
 function SignUp() {
   const navigation = useNavigation();
 
+  const { state, actions } = useContext(UsersContext);
   const [values] = useState<RegisterValues>({
     name: "",
     email: "",
     password: ""
   });
 
+  console.log(state);
+
   function onSubmit(values: RegisterValues, formikActions: FormikHelpers<RegisterValues>) {
+    const newUser = {
+      id: state.list.length + 1,
+      ...values
+    }
+
+    actions.addUser(newUser);
     formikActions.setSubmitting(false);
-    console.log(values)
   }
 
   return(
