@@ -8,7 +8,7 @@ import RootNavigator from './src/navigation';
 export default function App() {
   return (
     <>
-      <StatusBar style="dark" backgroundColor="#F8F8F8"/>
+      <StatusBar style="light" backgroundColor="#232323"/>
       <StoreProviders>
         <RootNavigator/>
       </StoreProviders>

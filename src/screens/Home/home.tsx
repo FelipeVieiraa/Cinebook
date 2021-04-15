@@ -3,11 +3,9 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Container, Text, LogOutButton, PostersContent } from './styles';
 import { SessionContext } from '../../store/session';
 import Header from '../../components/Header/header';
-import BannerCarousel from '../../components/BannerCarousel/bannerCarousel';
 import CinePoster from '../../components/CinePoster/cinePoster';
 import { apiFunctions } from '../../services/api';
 import { FlatList } from 'react-native-gesture-handler';
-import { widthPercentageToDP } from '../../utils/metrics';
 
 function Home() {
 
