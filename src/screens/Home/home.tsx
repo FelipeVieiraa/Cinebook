@@ -27,6 +27,9 @@ function Home() {
       <CinePoster
         source={{uri: item.image.original}}
         name={item.name}
+        average={item.rating.average}
+        genres={item.genres}
+        summary={item.summary}
         resizeMode="cover"
       />
     );
@@ -36,10 +39,6 @@ function Home() {
     <Container>
       <Header />
       <PostersContent>
-        <BannerCarousel
-          source={require('../../assets/banner-image.png')}
-          resizeMode="cover"
-        />
         <FlatList
           showsVerticalScrollIndicator={false}
           data={allShowsPosters}

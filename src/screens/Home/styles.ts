@@ -5,9 +5,8 @@ import { widthPercentageToDP } from '../../utils/metrics';
 export const Container = styled.View`
   flex: 1;
   padding: ${widthPercentageToDP(3)+'px'};
-  padding-top: ${widthPercentageToDP(20)+'px'};
+  padding-top: ${widthPercentageToDP(26)+'px'};
   background-color: #191919;
-  position: relative;
 `;
 
 export const Text = styled.Text`
@@ -31,6 +30,5 @@ export const LogOutButton = styled.TouchableOpacity`
 export const PostersContent = styled.View`
   flex: 1;
   width: 100%;
-  align-items: center;
   margin-top: ${widthPercentageToDP(1)+'px'};
 `;

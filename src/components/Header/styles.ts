@@ -1,8 +1,11 @@
+import { StatusBar, NativeModules } from 'react-native';
 import styled from 'styled-components/native';
+const { StatusBarManager } = NativeModules;
 
 import { heightPercentageToDP, widthPercentageToDP } from '../../utils/metrics';
 
 export const Container = styled.View`
+  margin-top: ${StatusBar.currentHeight ?? StatusBarManager?.HEIGHT};
   height: ${heightPercentageToDP(8.8)};
   width: ${widthPercentageToDP(100)};
   padding-right: ${widthPercentageToDP(7)};
