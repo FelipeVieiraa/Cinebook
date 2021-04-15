@@ -16,6 +16,7 @@ import SignUpForm, { RegisterValues } from './signUp.form';
 
 import { widthPercentageToDP } from '../../utils/metrics';
 import { UsersContext } from '../../store/users';
+import { Alert } from 'react-native';
 
 function SignUp() {
   const navigation = useNavigation();
@@ -27,6 +28,19 @@ function SignUp() {
     password: ""
   });
 
+  function AccountCreatedAlert() {
+    return Alert.alert(
+      "Conta criada!",
+      "Agora você poderá se conectar conosco e ter acesso as melhores recomendações de filmes e séries para assistir.",
+      [
+        {
+          text: "Fazer login",
+          onPress: () => navigation.navigate("signIn")
+        }
+      ]
+    );
+  }
+
   function onSubmit(values: RegisterValues, formikActions: FormikHelpers<RegisterValues>) {
     const newUser = {
       id: state.list.length + 1,
@@ -35,6 +49,7 @@ function SignUp() {
 
     actions.addUser(newUser);
     formikActions.setSubmitting(false);
+    AccountCreatedAlert();
   }
 
   return(
