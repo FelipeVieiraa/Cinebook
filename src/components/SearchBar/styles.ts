@@ -36,7 +36,7 @@ export const ToolButton = styled.TouchableOpacity`
 `;
 
 export const Input = styled.TextInput`
-  width: 90%;
+  width: 82%;
   height: ${heightPercentageToDP(5.8)};
   border-radius: 7px;
   margin-top: 14px;

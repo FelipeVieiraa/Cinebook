@@ -6,9 +6,10 @@ import { Container, ToolBoxContent, ToolButton, Input } from './styles';
 
 interface ComponentProps {
   onChangeText: (text: string) => void;
+  handleSearchInput: () => void;
 }
  
-function SearchBar({ onChangeText }: ComponentProps) {
+function SearchBar({ onChangeText, handleSearchInput }: ComponentProps) {
   return(
     <Container>
       <Input
@@ -19,6 +20,9 @@ function SearchBar({ onChangeText }: ComponentProps) {
       <ToolBoxContent>
         <ToolButton>
           <Icon icon="search" style={{width: widthPercentageToDP(5.5)}}/>
+        </ToolButton>
+        <ToolButton onPress={() => handleSearchInput()}>
+          <Icon icon="close" style={{width: widthPercentageToDP(5.5)}}/>
         </ToolButton>
       </ToolBoxContent>
     </Container>

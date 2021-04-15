@@ -7,16 +7,17 @@ import CinePoster from '../../components/CinePoster/cinePoster';
 import { apiFunctions } from '../../services/api';
 import { FlatList } from 'react-native-gesture-handler';
 import SearchBar from '../../components/SearchBar/searchBar';
+import DrawerMenu from '../../components/DrawerMenu/drawerMenu';
 
 function Home() {
 
   const { actions } = useContext(SessionContext);
   const [showsPosters, setShowsPosters] = useState([]);
-  const [showSearchInput, setShowSearchInput] = useState(false);
+  const [openSearchInput, setOpenSearchInput] = useState(false);
+  const [openDrawerMenu, setOpenDrawerMenu] = useState(false);
   const [search, setSearch] = useState("");
 
   useEffect(() => {
-    
     async function loadAllShowsPosters() {
       const shows = async () => {
         if(!search) {
@@ -52,7 +53,11 @@ function Home() {
   }
 
   function handleSearchInput() {
-    setShowSearchInput(true);
+    setOpenSearchInput(!openSearchInput);
+  }
+
+  function handleDrawerMenu() {
+    setOpenDrawerMenu(!openDrawerMenu);
   }
 
   function onChangeTextSearchInput(text: string) {
@@ -61,9 +66,10 @@ function Home() {
 
   return(
     <Container>
-      {showSearchInput 
-        ? <SearchBar onChangeText={onChangeTextSearchInput} /> 
-        : <Header handleSearchInput={handleSearchInput} />
+      <DrawerMenu show={openDrawerMenu}/>
+      {openSearchInput 
+        ? <SearchBar onChangeText={onChangeTextSearchInput} handleSearchInput={handleSearchInput} /> 
+        : <Header handleSearchInput={handleSearchInput} handleDrawerMenu={handleDrawerMenu}/>
       }
       <PostersContent>
         <FlatList
