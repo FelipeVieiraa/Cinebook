@@ -17,6 +17,8 @@ function CinePoster({source, resizeMode, name, genres, summary, average}: Compon
     .replace('<b>', '')
     .replace('</p>', '')
     .replace('</b>', '')
+    .replace('<i>', '')
+    .replace('</i>', '')
 
     if(newSummary.length <= 100) {
       return newSummary;

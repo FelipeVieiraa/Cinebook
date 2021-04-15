@@ -9,7 +9,18 @@ const api = axios.create({
 async function getAllShowsPosters() {
   try {
     const shows = await api.get("shows");
-    return shows.data
+    return shows.data;
+  }
+  catch(err) {
+    console.log(err);
+    return {}
+  }
+}
+
+async function getSearchShows(search: string) {
+  try {
+    const shows = await api.get(`search/shows?q=${search}`);
+    return shows.data;
   }
   catch(err) {
     console.log(err);
@@ -18,5 +29,6 @@ async function getAllShowsPosters() {
 }
 
 export const apiFunctions = {
-  getAllShowsPosters
+  getAllShowsPosters,
+  getSearchShows
 }
