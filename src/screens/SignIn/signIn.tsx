@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { FormikHelpers } from 'formik';
 
@@ -14,16 +14,26 @@ import { Icon } from '../../components/Icon/Icon';
 import SignInForm, { SessionValues } from './signIn.form';
 
 import { widthPercentageToDP } from '../../utils/metrics';
+import { UsersContext } from '../../store/users';
+import { SessionContext } from '../../store/session';
 
 function SignIn() {
   const navigation = useNavigation();
+
+  const { state } = useContext(UsersContext);
+  const { actions } = useContext(SessionContext);
 
   const [values] = useState<SessionValues>({
     email: "",
     password: ""
   });
+  const users = state.list;
 
   function onSubmit(values: SessionValues, formikActions: FormikHelpers<SessionValues>) {
+    const findUser = users.find(user => user.email === values.email && user.password === values.password);
+    if(findUser) {
+      actions.setCurrentUser(findUser);
+    }
     formikActions.setSubmitting(false);
   }
 

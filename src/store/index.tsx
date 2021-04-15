@@ -1,4 +1,6 @@
 import React from 'react';
+
+import SessionProvider from './session';
 import UsersProvider from './users';
 
 interface ProviderProps {
@@ -8,7 +10,9 @@ interface ProviderProps {
 function StoreProviders({children}: ProviderProps) {
   return(
     <UsersProvider>
-      {children}
+      <SessionProvider>
+        {children}
+      </SessionProvider>
     </UsersProvider>
   );
 }

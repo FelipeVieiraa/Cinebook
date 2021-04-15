@@ -27,8 +27,6 @@ function SignUp() {
     password: ""
   });
 
-  console.log(state);
-
   function onSubmit(values: RegisterValues, formikActions: FormikHelpers<RegisterValues>) {
     const newUser = {
       id: state.list.length + 1,
