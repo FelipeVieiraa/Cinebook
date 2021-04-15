@@ -3,9 +3,11 @@ import { ImageBackgroundProps } from 'react-native';
 
 import { Container, Poster, Main, PosterName } from './styles';
 
-interface ComponentProps extends ImageBackgroundProps {}
+interface ComponentProps extends ImageBackgroundProps {
+  name: string;
+}
 
-function CinePoster({source, resizeMode}: ComponentProps) {
+function CinePoster({source, resizeMode, name}: ComponentProps) {
   return(
     <Container>
       <Main>
@@ -15,7 +17,7 @@ function CinePoster({source, resizeMode}: ComponentProps) {
             resizeMode={resizeMode}
           />
           <PosterName>
-            Nome do filme
+            {name}
           </PosterName>
         </>
       </Main>
