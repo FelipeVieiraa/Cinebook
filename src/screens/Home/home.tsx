@@ -1,7 +1,6 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-import { Container, Text, LogOutButton, PostersContent } from './styles';
-import { SessionContext } from '../../store/session';
+import { Container, PostersContent } from './styles';
 import Header from '../../components/Header/header';
 import CinePoster from '../../components/CinePoster/cinePoster';
 import { apiFunctions } from '../../services/api';
@@ -11,7 +10,6 @@ import DrawerMenu from '../../components/DrawerMenu/drawerMenu';
 
 function Home() {
 
-  const { actions } = useContext(SessionContext);
   const [showsPosters, setShowsPosters] = useState([]);
   const [openSearchInput, setOpenSearchInput] = useState(false);
   const [openDrawerMenu, setOpenDrawerMenu] = useState(false);
@@ -79,9 +77,6 @@ function Home() {
           renderItem={renderShow}
         />
       </PostersContent>
-      <LogOutButton onPress={() => actions.expulseCurrentUser()}>
-        <Text>SAIR</Text>
-      </LogOutButton>
     </Container>
   );
 }

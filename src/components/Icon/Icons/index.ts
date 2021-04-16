@@ -6,7 +6,15 @@ export const icons = {
   signIn: require("./sign-in.png"),
   appName: require("./app-name.png"),
   search: require("./search.png"),
-  menu: require("./menu.png")
+  menu: require("./menu.png"),
+  user: require("./user.png"),
+  change: require("./change.png"),
+  favorite: require("./favorite.png"),
+  wishlist: require("./wishlist.png"),
+  chevronRight: require("./chevron-right.png"),
+  home: require("./home.png"),
+  blueHome: require("./blue-home.png"),
+  blueUser: require("./blue-user.png")
 }
   
 export type IconTypes = keyof typeof icons;

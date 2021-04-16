@@ -8,9 +8,7 @@ import { SessionContext } from '../store/session';
 function RootNavigator() {
     const { state } = useContext(SessionContext);
     const session = state.user?.id;
-
-    //console.log(session)
-
+    
     return(
         <NavigationContainer>
             {!!session ? <AppNavigator/> : <AuthNavigator/>}

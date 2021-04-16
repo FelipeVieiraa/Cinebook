@@ -3,7 +3,7 @@ import { StatusBar } from 'react-native';
 
 import { createStackNavigator } from '@react-navigation/stack';
 
-import Home from '../../screens/Home/home';
+import TabNavigator from './Tab.navigator';
 
 const StackNavigator = createStackNavigator();
 
@@ -21,8 +21,8 @@ function AppNavigator() {
       }}
     >
       <StackNavigator.Screen
-        name="home"
-        component={Home}
+        name="tab"
+        component={TabNavigator}
       />
     </StackNavigator.Navigator>
   );
