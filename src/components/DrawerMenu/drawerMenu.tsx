@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Animated, Dimensions, ViewStyle } from 'react-native';
+import { Animated, Dimensions, NativeModules, ViewStyle, StatusBar } from 'react-native';
+
+const { StatusBarManager } = NativeModules;
 import { heightPercentageToDP, widthPercentageToDP } from '../../utils/metrics';
 
 import { Title } from './styles';
@@ -7,9 +9,11 @@ import { Title } from './styles';
 const Container: ViewStyle = {
   position: "absolute",
   bottom: 0,
+  top: 0,
+  left: 0,
+  marginTop: StatusBar.currentHeight ?? StatusBarManager?.HEIGHT,
   width: widthPercentageToDP("58%"),
-  height: heightPercentageToDP("87.5%"),
-  backgroundColor: "#34312E",
+  backgroundColor: "#232323",
   elevation: 4,
   zIndex: 1,
   alignItems: "center"
@@ -29,7 +33,7 @@ interface ComponentProps {
 function DrawerMenu({ show }: ComponentProps) {
   const { width } = Dimensions.get('window');
 
-  const [state, setState] = useState({
+  const [state] = useState({
     container: new Animated.Value(width),
     menu: new Animated.Value(width)
   });
@@ -44,16 +48,23 @@ function DrawerMenu({ show }: ComponentProps) {
 
   const openMenu = () => {
     Animated.sequence([
-      Animated.timing(state.container, { toValue: Number(Number(width) - Number(widthPercentageToDP("58%"))), duration: 300, useNativeDriver: false }),
+      Animated.timing(
+        state.container,
+        {
+          toValue: 0,
+          duration: 300,
+          useNativeDriver: false
+        }
+      ),
       Animated.spring(state.menu, { toValue: 0, bounciness: 0, useNativeDriver: true })
-    ]).start()
+    ]).start();
   }
 
   const closeMenu = () => {
     Animated.sequence([
-      Animated.timing(state.menu, { toValue: width, duration: 200, useNativeDriver: true }),
-      Animated.timing(state.container, { toValue: width, duration: 400, useNativeDriver: false })
-    ]).start()
+      Animated.timing(state.menu, { toValue: -width, duration: 200, useNativeDriver: true }),
+      Animated.timing(state.container, { toValue: -width, duration: 400, useNativeDriver: false })
+    ]).start();
   }
 
   return(
